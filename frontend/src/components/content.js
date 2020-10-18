@@ -4,12 +4,13 @@ import Product from './product';
 import Data from './data';
 export class content extends Component {
     render() {
+
         return (
             <div>
                 <ul className = "products">
                     {
                         Data.products.map(product =>
-                            <li><Product product = {product}/></li>
+                            <li><Product product={product}/></li>
                         )
                     }
                     

@@ -1,7 +1,8 @@
 export default {
     products:[
         {
-            name: 'Friend',
+            _id: 1,
+            name: 'Friend1',
             image: '/images/file1.jpg',
             price: 1,
             brand: 'True',
@@ -9,20 +10,31 @@ export default {
             numReview: 12
         },
         {
-            name: 'Friend',
+            _id: 2,
+            name: 'Friend2',
             image: '/images/file1.jpg',
             price: 2,
             brand: 'Best',
             rating: 4.5,
             numReview: 8
         },{
-            name: 'Friend',
+            _id: 3,
+            name: 'Friend3',
             image: '/images/file1.jpg',
             price: 1.5,
             brand: 'Good',
             rating: 4.2,
             numReview: 10
         },{
+            _id: 4,
+            name: 'Friend4',
+            image: '/images/file1.jpg',
+            price: 2,
+            brand: 'True',
+            rating: 4.5,
+            numReview: 10
+        },{
+            _id: 5,
             name: 'Friend',
             image: '/images/file1.jpg',
             price: 2,
@@ -30,14 +42,8 @@ export default {
             rating: 4.5,
             numReview: 10
         },{
-            name: 'Friend',
-            image: '/images/file1.jpg',
-            price: 2,
-            brand: 'True',
-            rating: 4.5,
-            numReview: 10
-        },{
-            name: 'Friend',
+            _id: 6,
+            name: 'friend',
             image: '/images/file1.jpg',
             price: 2,
             brand: 'True',

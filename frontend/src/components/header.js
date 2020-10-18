@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom';
 import './header.css';
 import Sidebar from './sidebar';
 
@@ -12,7 +13,7 @@ export class header extends Component {
                 <header>
                     <div className = "brand">
                         <button onClick ={openMenu}>&#9776;</button>
-                        <a href = "index.html">Amazona</a>
+                        <Link to="/" >Amazona</Link>
                     </div>
                     
                     <div className = "header-links">
