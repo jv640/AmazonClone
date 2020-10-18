@@ -1,0 +1,28 @@
+.product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.product-name {
+    font-size: 2rem;
+}
+
+.product-brand {
+    font-size: 1.2rem;
+    color: #808080;
+}
+
+.product-price{
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.product-image{
+    max-height: 34rem;
+    max-width: 30rem;
+}
+
+.product-rating{
+    margin-bottom: 1rem;
+}
