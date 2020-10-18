@@ -10,8 +10,10 @@ function App() {
     <BrowserRouter>
       <div className="grid-container">
         <Header className = "header"/>
-        <Route path="/" exact={true} component={Content} />
-        <Route path="/products/:id"  component={ProductDetail} />
+        <main className="main">
+          <Route path="/" exact={true} component={Content} />
+          <Route path="/products/:id"  component={ProductDetail} />
+        </main>
         {/* <Content className = "main"/> */}
         < Footer className = "footer"/>
       </div>
