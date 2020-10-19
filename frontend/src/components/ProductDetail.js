@@ -20,6 +20,10 @@ function ProductDetail(props) {
             //
         }
     }, [])
+
+    const handleAddToCart = () => {
+        props.history.push("/cart/" + props.match.params.id + "?qty=" + qty);
+    }
     return (
         <div>
             <div><Link className="back" to="/">Back to results</Link></div>
@@ -53,7 +57,7 @@ function ProductDetail(props) {
                                 </select>
                             </li>
                             <li>
-                                {product.countInStock > 0 && <button className="button">Add to Cart</button>}
+                                {product.countInStock > 0 && <button onClick={handleAddToCart} className="button">Add to Cart</button>}
                             </li>
                         </ul>
                     </div>
