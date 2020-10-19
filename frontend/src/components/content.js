@@ -1,23 +1,35 @@
-import React, { Component } from 'react'
 import './content.css';
 import Product from './product';
-import Data from './data';
-export class content extends Component {
-    render() {
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-        return (
+
+function Content() {
+    const [products, setProduct] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () =>{
+            const {data} = await axios.get("/api/products");
+            setProduct(data);
+        }
+        fetchData();
+        return () => {
+            //
+        };
+    }, [])
+    
+    return (
             <div>
                 <ul className = "products">
                     {
-                        Data.products.map(product =>
-                            <li><Product product={product}/></li>
+                        products.map(product =>
+                            <li key={product._id}><Product product={product}/></li>
                         )
                     }
                     
                 </ul>
             </div>
         )
-    }
 }
 
-export default content
+export default Content
