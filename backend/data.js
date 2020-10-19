@@ -7,7 +7,8 @@ export default {
             price: 1,
             brand: 'True',
             rating: 4.2,
-            numReview: 12
+            numReview: 12,
+            countInStock: 12
         },
         {
             _id: 2,
@@ -16,7 +17,8 @@ export default {
             price: 2,
             brand: 'Best',
             rating: 4.5,
-            numReview: 8
+            numReview: 8,
+            countInStock: 10
         },{
             _id: 3,
             name: 'Friend3',
@@ -24,7 +26,8 @@ export default {
             price: 1.5,
             brand: 'Good',
             rating: 4.2,
-            numReview: 10
+            numReview: 10,
+            countInStock: 0
         },{
             _id: 4,
             name: 'Friend4',
@@ -32,7 +35,8 @@ export default {
             price: 2,
             brand: 'True',
             rating: 4.5,
-            numReview: 10
+            numReview: 10,
+            countInStock: 11
         },{
             _id: 5,
             name: 'Friend',
@@ -40,7 +44,8 @@ export default {
             price: 2,
             brand: 'True',
             rating: 4.5,
-            numReview: 10
+            numReview: 10,
+            countInStock: 15
         },{
             _id: 6,
             name: 'friend',
@@ -48,7 +53,8 @@ export default {
             price: 2,
             brand: 'True',
             rating: 4.5,
-            numReview: 10
+            numReview: 10,
+            countInStock: 17
         },
     ]
 };
