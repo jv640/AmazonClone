@@ -1,24 +1,25 @@
 import './content.css';
 import Product from './product';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { listProducts } from '../actions/productAction';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 function Content() {
-    const [products, setProduct] = useState([]);
+    const productList = useSelector(state => state.productList);
+    const {products, loading, error} = productList;
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const fetchData = async () =>{
-            const {data} = await axios.get("/api/products");
-            setProduct(data);
-        }
-        fetchData();
+        dispatch(listProducts());
         return () => {
             //
         };
     }, [])
     
     return (
+        loading ? <div>Loading....</div>:
+        error ? <div>{error}</div>:
             <div>
                 <ul className = "products">
                     {
