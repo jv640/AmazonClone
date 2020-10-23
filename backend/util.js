@@ -7,6 +7,6 @@ const getToken = user => {
     })
 }
 
-export {
+export { 
     getToken
 }
