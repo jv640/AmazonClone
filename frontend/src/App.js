@@ -12,9 +12,9 @@ function App() {
       <div className="grid-container">
         <Header className = "header"/>
         <main className="main">
-          <Route path="/" exact={true} component={Content} />
           <Route path="/cart/:id?" component={Cart} />
           <Route path="/products/:id"  component={ProductDetail} />
+          <Route path="/" exact={true} component={Content} />
         </main>
         {/* <Content className = "main"/> */}
         < Footer className = "footer"/>
