@@ -5,7 +5,6 @@ import {getToken} from '../util';
 const router = express.Router();
 
 router.post("/signin", async (req, res) => {
-    console.log('request here')
     const signinUser = await User.findOne({
         email: req.body.email,
         password: req.body.password
