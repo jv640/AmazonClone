@@ -16,9 +16,9 @@ export class header extends Component {
                         <Link to="/" >Amazona</Link>
                     </div>
                     
-                    <div className = "header-links">
-                        <a href = "cart.html">Cart</a>
-                        <a href = "signin.html">Sign In</a>
+                    <div className="header-links">
+                        <Link to="/cart">Cart</Link>
+                        <Link to="/signin">Sign In</Link>
                     </div>
                 </header>
                 <Sidebar />
