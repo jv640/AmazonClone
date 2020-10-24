@@ -3,16 +3,18 @@ import thunk from 'redux-thunk';
 import {productDetailsReducers, productListReducers} from '../reducers/productReducers';
 import {cartReducer} from '../reducers/cartReducers';
 import Cookie from 'js-cookie';
-import {userSigninReducer} from '../reducers/userReducers';
+import {userRegisterReducer, userSigninReducer} from '../reducers/userReducers';
 
 const cartItems = Cookie.getJSON("cartItems") || [];
+const userInfo = Cookie.getJSON("userInfo") || null;
 
-const initialState = {cart: {cartItems}};
+const initialState = {cart: {cartItems}, userSignin: {userInfo} };
 const reducer = combineReducers({
     productList: productListReducers,
     productDetails: productDetailsReducers,
     cart: cartReducer,
-    userSignin: userSigninReducer
+    userSignin: userSigninReducer,
+    userRegister: userRegisterReducer
 })
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, initialState, composeEnhancers(applyMiddleware(thunk)));
