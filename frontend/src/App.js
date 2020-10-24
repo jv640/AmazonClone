@@ -9,6 +9,7 @@ import Cart from './components/Cart';
 import SignIn from './components/SignIn';
 import {useSelector} from 'react-redux';
 import Register from './components/Register';
+import AddProduct from './components/AddProduct';
 function App () {
   
 
@@ -19,6 +20,7 @@ function App () {
         <main className="main">
           <Route path="/cart/:id?" component={Cart} />
           <Route path="/signin" component={SignIn} />
+          <Route path="/products" component={AddProduct} />
           <Route path="/register" component={Register} />
           <Route path="/products/:id"  component={ProductDetail} />
           <Route path="/" exact={true} component={Content} />
