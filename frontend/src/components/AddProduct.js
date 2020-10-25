@@ -14,9 +14,9 @@ function AddProduct (props) {
     const [countInStock, setCountInStock] = useState(0);
     const [description, setDescription] = useState('');
 
-    const productSave = useSelector(state => state.productSave);
     const productList = useSelector(state => state.productList);
     const {loading, products, error} = productList;
+    const productSave = useSelector(state => state.productSave);
     const {loading: loadingSave, success: successSave, error: errorSave} = productSave;
     const dispatch = useDispatch();
 
@@ -132,7 +132,8 @@ function AddProduct (props) {
                             </tr>
                         </thead>
                         <tbody>
-                            {products.map(product => (
+
+                            {products && products.map(product => (
                                 <tr key={product._id}>
                                     <td>{product._id}</td>
                                     <td>{product.name}</td>
