@@ -1,4 +1,8 @@
-import { PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_SAVE_FAIL, PRODUCT_SAVE_REQUEST, PRODUCT_SAVE_SUCCESS } from "../constants/productConstants";
+import {
+    PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS,
+    PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS,
+    PRODUCT_SAVE_FAIL, PRODUCT_SAVE_REQUEST, PRODUCT_SAVE_SUCCESS
+} from "../constants/productConstants";
 
 function productListReducers(state = {products: [] }, action) {
 
@@ -42,4 +46,4 @@ function productSaveReducers(state = {product: {} }, action) {
     }
 }
 
-export { productListReducers, productDetailsReducers, productSaveReducers }
+export {productListReducers, productDetailsReducers, productSaveReducers };
