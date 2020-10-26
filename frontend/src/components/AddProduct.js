@@ -1,7 +1,11 @@
+import Axios from 'axios';
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {listProducts, saveProduct} from '../actions/productAction';
+import {listProducts, saveProduct, deleteProduct} from '../actions/productAction';
+import {PRODUCT_DELETE_FAIL, PRODUCT_DELETE_REQUEST, PRODUCT_DELETE_SUCCESS} from '../constants/productConstants';
+
+
 
 function AddProduct (props) {
     const [modalVisible, setModalVisible] = useState(false);
@@ -17,7 +21,9 @@ function AddProduct (props) {
     const productList = useSelector(state => state.productList);
     const {loading, products, error} = productList;
     const productSave = useSelector(state => state.productSave);
+    const productDelete = useSelector(state => state.productDelete);
     const {loading: loadingSave, success: successSave, error: errorSave} = productSave;
+    const {loading: loadingDelete, success: successDelete, error: errorDelete} = productDelete;
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -28,7 +34,7 @@ function AddProduct (props) {
         return () => {
             //
         }
-    }, [successSave])
+    }, [successSave, successDelete]);
 
     const openModal = (product) => {
         setModalVisible(true);
@@ -45,6 +51,10 @@ function AddProduct (props) {
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(saveProduct({_id: id, name, price, image, brand, category, countInStock, description}));
+    };
+
+    const deleteHandler = (product) => {
+        dispatch(deleteProduct(product._id));
     };
   
     return (
@@ -143,6 +153,7 @@ function AddProduct (props) {
                                     <td>{product.image}</td>
                                     <td>
                                         <button onClick={() => openModal(product)}>Edit</button>
+                                        <button onClick={() => deleteHandler(product)}>Delete</button>
                                     </td>
                                 </tr>
                             ))}

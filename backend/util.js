@@ -23,8 +23,9 @@ const isAuth = (req, res, next) => {
             next ();
             return;
         });
+    } else {
+        return res.status(401).send({ msg: 'Token is not Supllied. '})
     }
-    return res.status(401).send({ msg: 'Token is not Supllied. '})
 }
 
 const isAdmin = (req, res, next) => {
