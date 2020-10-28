@@ -5,14 +5,18 @@ import {addToCart, removeFromCart} from '../actions/CartAction';
 import './cart.css';
 
 function Cart (props) {
+    
     const cart = useSelector(state => state.cart);
     const {cartItems} = cart; 
     const productId = props.match.params.id;
     const qty = props.location.search ? Number(props.location.search.split("=")[1]) : 1;
     const dispatch = useDispatch();
+    
+    
     const removeFromCartHandler = (productId) => {
         dispatch(removeFromCart(productId));
     }
+    
     const checkoutHandler = () => {
         props.history.push("/signin?redirect=shipping")
     }
@@ -20,9 +24,6 @@ function Cart (props) {
     useEffect(() => {
         if (productId)
             dispatch(addToCart(productId, qty));
-        return () => {
-            //
-        }
     }, [])
 
     return (

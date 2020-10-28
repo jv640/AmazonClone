@@ -7,9 +7,12 @@ import ProductDetail from './components/ProductDetail';
 import {BrowserRouter, Route} from 'react-router-dom';
 import Cart from './components/Cart';
 import SignIn from './components/SignIn';
-import {useSelector} from 'react-redux';
 import Register from './components/Register';
 import AddProduct from './components/AddProduct';
+import Shipping from './components/Shipping';
+import Payment from './components/Payment';
+import PlaceOrder from './components/PlaceOrder';
+import Profile from './components/Profile';
 function App () {
   
 
@@ -20,9 +23,14 @@ function App () {
         <main className="main">
           <Route path="/cart/:id?" component={Cart} />
           <Route path="/signin" component={SignIn} />
-          <Route path="/products" component={AddProduct} />
+          <Route path="/addproducts" component={AddProduct} />
+          <Route path="/shipping" component={Shipping} />
+          <Route path="/payment" component={Payment} />
+          <Route path="/placeorder" component={PlaceOrder} />
+          {/* <Route path="/order" component={Order} /> */}
           <Route path="/register" component={Register} />
           <Route path="/products/:id"  component={ProductDetail} />
+          <Route path="/profile"  component={Profile} />
           <Route path="/" exact={true} component={Content} />
         </main>
         {/* <Content className = "main"/> */}

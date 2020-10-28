@@ -5,7 +5,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './components/store';
 import {Provider} from 'react-redux';
-// export {deleteProduct} from './actions/productAction';
 
 ReactDOM.render(
   <React.StrictMode>

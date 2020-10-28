@@ -53,3 +53,14 @@ button{
 button:hover{
     border: .1rem #303030 solid;
 }
+ul.review {
+  list-style-type: none;
+  padding: 0;
+}
+.review li {
+  margin: 1rem;
+  margin-bottom: 2rem;
+}
+.review li > div {
+  margin: 0.5rem;
+}

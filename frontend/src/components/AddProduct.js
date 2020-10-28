@@ -1,9 +1,7 @@
-import Axios from 'axios';
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
 import {listProducts, saveProduct, deleteProduct} from '../actions/productAction';
-import {PRODUCT_DELETE_FAIL, PRODUCT_DELETE_REQUEST, PRODUCT_DELETE_SUCCESS} from '../constants/productConstants';
+import './addproduct.css'
 
 
 

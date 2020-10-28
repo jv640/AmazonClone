@@ -8,8 +8,8 @@ const getToken = user => {
         isAdmin: user.isAdmin
     }, config.JWT_SECRET, {
         expiresIn: '48h'
-    })
-}
+    });
+};
 
 const isAuth = (req, res, next) => {
     const token = req.headers.authorization;
@@ -20,13 +20,13 @@ const isAuth = (req, res, next) => {
                 return res.status(401).send({msg: 'Invalid Token'});
             }
             req.user = decode;
-            next ();
+            next();
             return;
         });
     } else {
-        return res.status(401).send({ msg: 'Token is not Supllied. '})
+        return res.status(401).send({msg: 'Token is not Supllied. '})
     }
-}
+};
 
 const isAdmin = (req, res, next) => {
     if (req.user && req.user.isAdmin) {

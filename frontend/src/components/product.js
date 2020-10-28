@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './product.css';
+import Rating from './Rating';
 export class product extends Component {
     render() {
         return (
@@ -13,7 +14,9 @@ export class product extends Component {
                 </div>
                 <div className = "product-brand">{this.props.product.brand}</div>
                 <div className = "product-price">Rs {this.props.product.price}</div>
-                <div className = "product-rating">{this.props.product.rating} stars ({this.props.product.numReview} reviews)</div>
+                <div className="product-rating">
+                    <Rating value={this.props.product.rating} text={this.props.product.numReviews + ' reviews'} />
+                </div>
             </div>
         )
     }
