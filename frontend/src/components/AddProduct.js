@@ -4,7 +4,6 @@ import {listProducts, saveProduct, deleteProduct} from '../actions/productAction
 import './addproduct.css'
 
 
-
 function AddProduct (props) {
     const [modalVisible, setModalVisible] = useState(false);
     const [id, setId] = useState('')
@@ -60,7 +59,7 @@ function AddProduct (props) {
             <div className="content content-margined">
                 <div className="product-header">
                     <h3>Products</h3>
-                    <button onClick={() => openModal({})}>Create Product</button>
+                    <button className="create" onClick={() => openModal({})}>Create Product</button>
                 </div>
                 {modalVisible && (
                     <div className="form">
@@ -135,7 +134,7 @@ function AddProduct (props) {
                                 <th>Price</th>
                                 <th>Category</th>
                                 <th>Brand</th>
-                                <th>Image</th>
+                                {/* <th>Image</th> */}
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -148,10 +147,10 @@ function AddProduct (props) {
                                     <td>{product.price}</td>
                                     <td>{product.category}</td>
                                     <td>{product.brand}</td>
-                                    <td>{product.image}</td>
+                                    {/* <td>{product.image}</td> */}
                                     <td>
                                         <button onClick={() => openModal(product)}>Edit</button>
-                                        <button onClick={() => deleteHandler(product)}>Delete</button>
+                                        <button className="delete-button" onClick={() => deleteHandler(product)}>Delete</button>
                                     </td>
                                 </tr>
                             ))}
