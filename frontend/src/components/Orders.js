@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { listOrders, deleteOrder } from '../actions/orderActions';
+import { listOrders, deleteOrder } from '../actions/orderAction';
 
 function Orders(props) {
   const orderList = useSelector(state => state.orderList);
@@ -45,7 +45,7 @@ function Orders(props) {
             </tr>
           </thead>
           <tbody>
-            {orders.map(order => (<tr key={order._id}>
+            {orders && orders.map(order => (<tr key={order._id}>
               <td>{order._id}</td>
               <td>{order.createdAt}</td>
               <td>{order.totalPrice}</td>

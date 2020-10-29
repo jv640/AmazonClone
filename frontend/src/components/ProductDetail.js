@@ -88,7 +88,7 @@ function ProductDetail(props) {
                                     {product.countInStock > 0 && <button onClick={handleAddToCart} className="button">Add to Cart</button>}
                                 </li>
                             </ul>
-                        </div>
+                        </div> 
                         <div className="content-margined">
                             <h2>Reviews</h2>
                             {!product.reviews.length && <div>There is no review</div>}

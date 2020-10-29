@@ -64,3 +64,6 @@ ul.review {
 .review li > div {
   margin: 0.5rem;
 }
+.content-margined {
+    margin: 1rem;
+}

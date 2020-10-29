@@ -13,6 +13,8 @@ import Shipping from './components/Shipping';
 import Payment from './components/Payment';
 import PlaceOrder from './components/PlaceOrder';
 import Profile from './components/Profile';
+import Order from './components/Order';
+import Orders from './components/Orders';
 function App () {
   
 
@@ -27,7 +29,8 @@ function App () {
           <Route path="/shipping" component={Shipping} />
           <Route path="/payment" component={Payment} />
           <Route path="/placeorder" component={PlaceOrder} />
-          {/* <Route path="/order" component={Order} /> */}
+          <Route path="/order" component={Order} />
+          <Route path="/orders" component={Orders} />
           <Route path="/register" component={Register} />
           <Route path="/products/:id"  component={ProductDetail} />
           <Route path="/profile"  component={Profile} />
