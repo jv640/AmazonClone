@@ -57,7 +57,7 @@ router.post('/:id/reviews', isAuth, async (req, res) => {
   }
 });
 
-router.post("/", isAdmin, isAuth, async (req, res) => {
+router.post('/',isAuth,  isAdmin, async (req, res) => {
     const product = new Product({
         name: req.body.name,
         price: req.body.price,
@@ -76,9 +76,9 @@ router.post("/", isAdmin, isAuth, async (req, res) => {
     return res.status(500).send({ message: 'Error in creating Product '})
 })
 
-router.put("/:id", isAdmin, isAuth, async (req, res) => {
-    const productId = req.params.id;
-    const product = await Product.findById(productId);
+router.put('/:id', isAuth, isAdmin, async (req, res) => {
+  const productId = req.params.id; 
+  const product = await Product.findById(productId);
     if (product) {
         product.name = req.body.name;
         product.price = req.body.price;
