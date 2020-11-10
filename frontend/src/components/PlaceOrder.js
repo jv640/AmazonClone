@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CheckoutSteps from './CheckOutSteps';
 import { createOrder } from '../actions/orderAction';
+import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
+
+const REACT_APP_STRIPE_PS_KEY = 'pk_test_51Hl5NiH89umJJryR5WjM6dVUxsCLbv8DI975EtwOo15ngVXmFtVx7NcDN10pmaWgbZz4MZuiCdACRUDJkspYVcdy00kKcS5FOb';
 function PlaceOrder(props) {
 
   const cart = useSelector(state => state.cart);
@@ -35,6 +39,24 @@ function PlaceOrder(props) {
     }
 
   }, [success]);
+
+
+  const makePayment = (token) => {
+    console.log('make payment')
+    const product = {
+      'product': "dummy"
+    }
+    const body = {
+      token,
+      product
+    }
+    axios.post('/api/orders/payment', body)
+      .then((response) => {
+        console.log('response', response)
+        success = true
+      })
+      .catch(err => console.log(err))
+  }
 
   return <div>
     <CheckoutSteps step1 step2 step3 step4 ></CheckoutSteps>
@@ -96,12 +118,22 @@ function PlaceOrder(props) {
           </ul>
         </div>
 
-      
+
       </div>
       <div className="placeorder-action">
         <ul>
           <li>
-            <button className="button primary full-width" onClick={placeOrderHandler} >Place Order</button>
+            {/* <button className="button primary full-width" onClick={placeOrderHandler} >Place Order</button> */}
+            <StripeCheckout
+              stripeKey={REACT_APP_STRIPE_PS_KEY}
+
+              token={makePayment}
+              name="Amazona"
+              currency="INR"
+              billingAddress={true}
+              amount='100'  >
+              <button className="btn-large pink">Buy ticket RS 100 </button>
+            </StripeCheckout>
           </li>
           <li>
             <h3>Order Summary</h3>
