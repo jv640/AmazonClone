@@ -29,7 +29,7 @@ function Header () {
                     }
                     {userInfo && userInfo.isAdmin && (
                     <div className="dropdown">
-                        <a href="#">Admin</a>
+                        <a href="">Admin</a>
                         <ul className="dropdown-content">
                         <li>
                             <Link to="/orders">Orders</Link>

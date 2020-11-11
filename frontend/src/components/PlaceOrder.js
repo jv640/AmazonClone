@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import CheckoutSteps from './CheckOutSteps';
 import { createOrder } from '../actions/orderAction';
 import StripeCheckout from 'react-stripe-checkout';
-import axios from 'axios';
+import axios from 'axios'; 
 
-const REACT_APP_STRIPE_PS_KEY = 'pk_test_51Hl5NiH89umJJryR5WjM6dVUxsCLbv8DI975EtwOo15ngVXmFtVx7NcDN10pmaWgbZz4MZuiCdACRUDJkspYVcdy00kKcS5FOb';
+const REACT_APP_STRIPE_PS_KEY = process.env.REACT_APP_STRIPE_PS_KEY; 
 function PlaceOrder(props) {
 
   const cart = useSelector(state => state.cart);
