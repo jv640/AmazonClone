@@ -7,6 +7,7 @@ import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios'; 
 
 const REACT_APP_STRIPE_PS_KEY = process.env.REACT_APP_STRIPE_PS_KEY; 
+// console.log(REACT_APP_STRIPE_PS_KEY)
 function PlaceOrder(props) {
 
   const cart = useSelector(state => state.cart);
@@ -94,7 +95,7 @@ function PlaceOrder(props) {
           </div>
                 :
                 cartItems.map(item =>
-                  <li>
+                  <li key={item._id}>
                     <div className="cart-image">
                       <img src={item.image} alt="product" />
                     </div>
@@ -131,8 +132,8 @@ function PlaceOrder(props) {
               name="Amazona"
               currency="INR"
               billingAddress={true}
-              amount='100'  >
-              <button className="btn-large pink">Buy ticket RS 100 </button>
+              amount={totalPrice}  >
+              <button className="btn-large pink">Buy ticket RS {totalPrice} </button>
             </StripeCheckout>
           </li>
           <li>
