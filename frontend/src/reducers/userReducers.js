@@ -8,7 +8,7 @@ function userSigninReducer (state = {}, action) {
         case USER_SIGNIN_SUCCESS:
             return {loading: false, userInfo: action.payload};
         case USER_SIGNIN_FAIL:
-            return {laoding: false, userInfo: action.payload};
+            return {loading: false, userInfo: action.payload};
         case USER_LOGOUT:
             return {};
         default:
@@ -33,7 +33,7 @@ function userRegisterReducer (state = {}, action) {
         case USER_REGISTER_SUCCESS:
             return {loading: false, userInfo: action.payload};
         case USER_REGISTER_FAIL:
-            return {laoding: false, userInfo: action.payload};
+            return {loading: false, userInfo: action.payload};
         default:
             return state;
     }

@@ -8,7 +8,6 @@ function openMenu() {
     document.querySelector(".sidebar").classList.add("open");
 }
 
-
 function Header () {
     const userSignIn = useSelector(state => state.userSignin);
     const {userInfo} = userSignIn;
@@ -16,11 +15,10 @@ function Header () {
     return (
         <div>
             <header>
-                <div className = "brand">
-                    <button onClick ={openMenu}>&#9776;</button>
+                <div className="brand">
+                    <button className="menu" onClick ={openMenu}>&#9776;</button>
                     <Link to="/" >Amazona</Link>
                 </div>
-                
                 <div className="header-links">
                     <Link to="/cart">Cart</Link>
                     {
@@ -29,12 +27,10 @@ function Header () {
                     }
                     {userInfo && userInfo.isAdmin && (
                     <div className="dropdown">
-                        <a href="">Admin</a>
+                        <Link to="#">Admin</Link>
                         <ul className="dropdown-content">
-                        <li>
-                            <Link to="/orders">Orders</Link>
-                            <Link to="/addproducts">Products</Link>
-                        </li>
+                            <li><Link to="/orders">Orders</Link></li>
+                            <li><Link to="/products">Products</Link></li>
                         </ul>
                     </div>
                     )}

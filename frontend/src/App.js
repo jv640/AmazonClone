@@ -15,9 +15,8 @@ import PlaceOrder from './components/PlaceOrder';
 import Profile from './components/Profile';
 import Order from './components/Order';
 import Orders from './components/Orders';
-function App () {
-  
 
+function App () {
   return (
     <BrowserRouter>
       <div className="grid-container">
