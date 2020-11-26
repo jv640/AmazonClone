@@ -66,7 +66,7 @@ function Profile(props) {
               </input>
             </li>
             <li>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Change Password</label>
               <input value={password} type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
               </input>
             </li>

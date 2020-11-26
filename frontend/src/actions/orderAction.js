@@ -5,16 +5,17 @@ import {
 } from "../constants/orderConstants";
 
 const createOrder = (order) => async (dispatch, getState) => {
-  try {
+  try { 
     dispatch({ type: ORDER_CREATE_REQUEST, payload: order });
-    const { userSignin: { userInfo } } = getState();
-    const { data: { data: newOrder } } = await Axios.post("/api/orders", order, {
+    const { userSignin: { userInfo } } = getState(); 
+    const { data: { data: newOrder } } = await Axios.post("/api/orders/create", order, {
       headers: {
         Authorization: ' Bearer ' + userInfo.token
       }
     });
     dispatch({ type: ORDER_CREATE_SUCCESS, payload: newOrder });
   } catch (error) {
+    console.log('create order failed')
     dispatch({ type: ORDER_CREATE_FAIL, payload: error.message });
   }
 }

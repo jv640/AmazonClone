@@ -16,11 +16,11 @@ function AddProduct (props) {
     const [description, setDescription] = useState('');
 
     const productList = useSelector(state => state.productList);
-    const {loading, products, error} = productList;
+    const { products} = productList;
     const productSave = useSelector(state => state.productSave);
     const productDelete = useSelector(state => state.productDelete);
     const {loading: loadingSave, success: successSave, error: errorSave} = productSave;
-    const {loading: loadingDelete, success: successDelete, error: errorDelete} = productDelete;
+    const { success: successDelete} = productDelete;
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -133,6 +133,7 @@ function AddProduct (props) {
                                 <th>Name</th>
                                 <th>Price</th>
                                 <th>Category</th>
+                                <th>Count In Stock</th>
                                 <th>Brand</th>
                                 {/* <th>Image</th> */}
                                 <th>Action</th>
@@ -146,6 +147,7 @@ function AddProduct (props) {
                                     <td>{product.name}</td>
                                     <td>{product.price}</td>
                                     <td>{product.category}</td>
+                                    <td>{product.countInStock}</td>
                                     <td>{product.brand}</td>
                                     {/* <td>{product.image}</td> */}
                                     <td>

@@ -36,8 +36,8 @@ a:hover{
   list-style-type: none;
   /* z-index: 1; */
   background-color: #203040;
-  /* margin: 0; */
-  /* margin-top: 0.4rem; */
+  margin: 0;
+  margin-top: 0.4rem;
 }
 
 .dropdown:hover .dropdown-content {

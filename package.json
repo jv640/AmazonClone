@@ -20,8 +20,12 @@
     "@babel/preset-env": "^7.12.1",
     "nodemon": "^2.0.5"
   },
-  "scripts": {
-    "start": "nodemon --watch backend --exec babel-node backend/server.js"
+   "scripts": {
+    "start": "cd backend && node server.js",
+    "heroku-postbuild": "cd frontend && npm run build",
+    "server-dev": "cd backend && node server.js",
+    "client-dev": "cd frontend && npm start",
+    "start-dev": "concurrently \"npm run server-dev\" \"npm run client-dev\""
   },
   "repository": {
     "type": "git",

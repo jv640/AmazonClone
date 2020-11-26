@@ -4,17 +4,19 @@ import { Link } from 'react-router-dom';
 import CheckoutSteps from './CheckOutSteps';
 import { createOrder } from '../actions/orderAction';
 import StripeCheckout from 'react-stripe-checkout';
-import axios from 'axios'; 
+import axios from 'axios';
+import {REACT_APP_STRIPE_PS_KEY} from '../config/keys';
 
-const REACT_APP_STRIPE_PS_KEY = process.env.REACT_APP_STRIPE_PS_KEY || 'pk_test_51Hl5NiH89umJJryR5WjM6dVUxsCLbv8DI975EtwOo15ngVXmFtVx7NcDN10pmaWgbZz4MZuiCdACRUDJkspYVcdy00kKcS5FOb'; 
-// console.log(REACT_APP_STRIPE_PS_KEY)
 function PlaceOrder(props) {
 
   const cart = useSelector(state => state.cart);
   const orderCreate = useSelector(state => state.orderCreate);
-  const { loading, success, error, order } = orderCreate;
+  const userSignin = useSelector(state => state.userSignin);
+  const {loading, userInfo, error} = userSignin;
+  // console.log('orderCreat', orderCreate)
+  const { success, order } = orderCreate;
 
-  const { cartItems, shipping, payment } = cart;
+  const {cartItems, shipping, payment} = cart;
   if (!shipping.address) {
     props.history.push("/shipping");
   } else if (!payment.paymentMethod) {
@@ -26,26 +28,26 @@ function PlaceOrder(props) {
   const totalPrice = itemsPrice + shippingPrice + taxPrice;
 
   const dispatch = useDispatch();
-
+ 
   const placeOrderHandler = () => {
-    // create an order
     dispatch(createOrder({
       orderItems: cartItems, shipping, payment, itemsPrice, shippingPrice,
-      taxPrice, totalPrice
+      taxPrice, totalPrice, userInfo
     }));
   }
+
   useEffect(() => {
     if (success) {
-      props.history.push("/order/" + order._id);
+      
     }
 
   }, [success]);
 
 
   const makePayment = (token) => {
-    console.log('make payment')
+    // console.log(token);
     const product = {
-      'product': "dummy"
+      'product': "Cart"
     }
     const body = {
       token,
@@ -53,8 +55,11 @@ function PlaceOrder(props) {
     }
     axios.post('/api/orders/payment', body)
       .then((response) => {
-        console.log('response', response)
-        success = true
+        // console.log('response', response)
+        placeOrderHandler();
+        // console.log(order)
+        props.history.push("/order/");
+        // console.log('Success', success)
       })
       .catch(err => console.log(err))
   }
@@ -69,7 +74,7 @@ function PlaceOrder(props) {
           </h3>
           <div>
             {cart.shipping.address}, {cart.shipping.city},
-          {cart.shipping.postalCode}, {cart.shipping.country},
+          {cart.shipping.postal}, {cart.shipping.country},
           </div>
         </div>
         <div>
@@ -127,13 +132,12 @@ function PlaceOrder(props) {
             {/* <button className="button primary full-width" onClick={placeOrderHandler} >Place Order</button> */}
             <StripeCheckout
               stripeKey={REACT_APP_STRIPE_PS_KEY}
-
               token={makePayment}
               name="Amazona"
               currency="INR"
               billingAddress={true}
-              amount={totalPrice}  >
-              <button className="btn-large pink">Buy ticket RS {totalPrice} </button>
+              amount={totalPrice*100}  >
+              <button className="btn-large pink">Order RS {totalPrice} </button>
             </StripeCheckout>
           </li>
           <li>
@@ -156,11 +160,7 @@ function PlaceOrder(props) {
             <div>${totalPrice}</div>
           </li>
         </ul>
-
-
-
       </div>
-
     </div>
   </div>
 

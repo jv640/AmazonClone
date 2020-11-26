@@ -70,7 +70,7 @@ function ProductDetail(props) {
                                 <li><b> Rs {product.price}</b></li>
                                 <li>
                                     Description:
-                                    <div>{product.desc}</div>
+                                    <div>{product.description}</div>
                                 </li>
                             </ul>
                         </div>

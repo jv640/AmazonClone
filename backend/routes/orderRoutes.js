@@ -36,10 +36,11 @@ router.delete("/:id", isAuth, isAdmin, async (req, res) => {
   }
 });
 
-router.post("/", isAuth, async (req, res) => {
+router.post("/create", async (req, res) => {
+  // console.log(req)
   const newOrder = new Order({
     orderItems: req.body.orderItems,
-    user: req.user._id,
+    user: req.body.userInfo,
     shipping: req.body.shipping,
     payment: req.body.payment,
     itemsPrice: req.body.itemsPrice,
@@ -48,7 +49,10 @@ router.post("/", isAuth, async (req, res) => {
     totalPrice: req.body.totalPrice,
   });
   const newOrderCreated = await newOrder.save();
-  res.status(201).send({ message: "New Order Created", data: newOrderCreated });
+  if (newOrderCreated) {
+    return res.status(201).send({message: 'New Order Created', data: newOrder})
+  }
+    return res.status(500).send({ message: 'Error in creating order '})
 });
 
 router.put("/:id/pay", isAuth, async (req, res) => {
@@ -87,7 +91,7 @@ router.post('/payment', (req, res) => {
         currency: 'INR',
         customer: customer.id,
         receipt_email: token.email,
-        description: `Purchase of dummy`,
+        description: `Purchase of Items`,
       }, { idempotencyKey })
     }).then((result) => {
       res.status(200).json({

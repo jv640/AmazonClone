@@ -4,11 +4,14 @@ import {Link} from 'react-router-dom';
 import './header.css';
 import Sidebar from './sidebar';
 
+
+
 function openMenu() {
     document.querySelector(".sidebar").classList.add("open");
 }
 
-function Header () {
+
+function Header (props) {
     const userSignIn = useSelector(state => state.userSignin);
     const {userInfo} = userSignIn;
 
@@ -22,7 +25,7 @@ function Header () {
                 <div className="header-links">
                     <Link to="/cart">Cart</Link>
                     {
-                        userInfo ? <Link to="/profile">Welcome {userInfo.name}</Link> :
+                        userInfo && userInfo.name ? <Link to="/profile">Welcome {userInfo.name}</Link>:
                             <Link to="/signin">Sign In</Link>
                     }
                     {userInfo && userInfo.isAdmin && (
@@ -30,7 +33,7 @@ function Header () {
                         <Link to="#">Admin</Link>
                         <ul className="dropdown-content">
                             <li><Link to="/orders">Orders</Link></li>
-                            <li><Link to="/products">Products</Link></li>
+                            <li><Link to="/addproducts">Products</Link></li>
                         </ul>
                     </div>
                     )}

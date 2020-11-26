@@ -57,7 +57,7 @@ router.post('/:id/reviews', isAuth, async (req, res) => {
   }
 });
 
-
+ 
 router.post('/',isAuth,  isAdmin, async (req, res) => {
     const product = new Product({
         name: req.body.name,
